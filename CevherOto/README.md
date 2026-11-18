@@ -1,3 +1,5 @@
+<img src="docs/logo.png" alt="logo" width="140" align="right">
+
 # CevherOto
 
 AutoPickup, AutoBlock ve BestTools'u tek eklentide topladık. Her oyuncu `/oto` menüsünden istediği özelliği

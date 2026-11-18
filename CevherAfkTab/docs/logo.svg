@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3350"/><stop offset="1" stop-color="#121626"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2fc4f2"/><stop offset="1" stop-color="#7cfb90"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="72" fill="url(#bg)" stroke="url(#rim)" stroke-width="10"/>
+  <!-- tab listesi satırları -->
+  <g shape-rendering="crispEdges">
+    <rect x="72" y="92" width="368" height="52" fill="#000" fill-opacity=".45"/>
+    <rect x="84" y="102" width="32" height="32" fill="#7cfb90"/>
+    <rect x="132" y="112" width="190" height="12" fill="#fff"/>
+    <rect x="388" y="104" width="8" height="28" fill="#7cfb90"/><rect x="400" y="110" width="8" height="22" fill="#7cfb90"/>
+    <rect x="412" y="116" width="8" height="16" fill="#7cfb90"/>
+
+    <rect x="72" y="156" width="368" height="52" fill="#000" fill-opacity=".45"/>
+    <rect x="84" y="166" width="32" height="32" fill="#2fc4f2"/>
+    <rect x="132" y="176" width="150" height="12" fill="#fff"/>
+    <rect x="388" y="168" width="8" height="28" fill="#7cfb90"/><rect x="400" y="174" width="8" height="22" fill="#7cfb90"/>
+    <rect x="412" y="180" width="8" height="16" fill="#7cfb90"/>
+
+    <!-- AFK satırı: gizlenen, kesik çizgili -->
+    <rect x="72" y="220" width="368" height="52" fill="none" stroke="#ff4e4e" stroke-width="4" stroke-dasharray="14 10"/>
+    <rect x="84" y="230" width="32" height="32" fill="#888" fill-opacity=".45"/>
+    <rect x="132" y="240" width="170" height="12" fill="#fff" fill-opacity=".3"/>
+    <rect x="72" y="244" width="368" height="6" fill="#ff4e4e"/>
+
+    <rect x="72" y="284" width="368" height="52" fill="#000" fill-opacity=".45"/>
+    <rect x="84" y="294" width="32" height="32" fill="#ffc400"/>
+    <rect x="132" y="304" width="210" height="12" fill="#fff"/>
+    <rect x="388" y="296" width="8" height="28" fill="#7cfb90"/><rect x="400" y="302" width="8" height="22" fill="#7cfb90"/>
+    <rect x="412" y="308" width="8" height="16" fill="#7cfb90"/>
+  </g>
+  <text x="256" y="420" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-weight="800" font-size="64" fill="#fff" letter-spacing="2">AFK<tspan fill="#2fc4f2">Tab</tspan></text>
+  <text x="256" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#9aa4c4" letter-spacing="4">CEVHERSTUDIO</text>
+</svg>

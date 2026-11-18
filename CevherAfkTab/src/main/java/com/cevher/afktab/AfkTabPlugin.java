@@ -1,6 +1,5 @@
 package com.cevher.afktab;
 
-import net.ess3.api.IUser;
 import net.ess3.api.events.AfkStatusChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -8,61 +7,75 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-/** Essentials AFK durumuna göre oyuncuyu diğerlerinin tab listesinden gizler (Paper unlistPlayer). */
-public final class AfkTabPlugin extends JavaPlugin implements Listener {
-    private static final String BYPASS = "cevherafktab.gor";
-    private final Set<UUID> afk = new HashSet<>();
+public class AfkTabPlugin extends JavaPlugin implements Listener {
+
+    private final Set<UUID> afkListesi = new HashSet<>();
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
     public void onDisable() {
-        for (UUID id : afk) {
+        // kapanirken herkesi geri goster
+        for (UUID id : afkListesi) {
             Player p = Bukkit.getPlayer(id);
-            if (p != null) apply(p, false);
+            if (p != null) goster(p);
         }
-        afk.clear();
+        afkListesi.clear();
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onAfk(AfkStatusChangeEvent e) {
-        IUser u = e.getAffected();
-        Player p = u.getBase();
+    public void afkDegisti(AfkStatusChangeEvent e) {
+        Player p = e.getAffected().getBase();
         if (p == null) return;
-        boolean now = e.getValue();
-        if (now) afk.add(p.getUniqueId()); else afk.remove(p.getUniqueId());
-        apply(p, now);
+
+        if (e.getValue()) {
+            afkListesi.add(p.getUniqueId());
+            gizle(p);
+        } else {
+            afkListesi.remove(p.getUniqueId());
+            goster(p);
+        }
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        Player viewer = e.getPlayer();
+    public void girdi(PlayerJoinEvent e) {
+        Player yeni = e.getPlayer();
+        if (yeni.hasPermission("cevherafktab.gor")) return;
+
+        // tab paketleri gelmeden unlist etmek ise yaramiyor, biraz bekle
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            if (!viewer.isOnline() || viewer.hasPermission(BYPASS)) return;
-            for (UUID id : afk) {
-                Player t = Bukkit.getPlayer(id);
-                if (t != null && !t.equals(viewer)) viewer.unlistPlayer(t);
+            for (UUID id : afkListesi) {
+                Player afk = Bukkit.getPlayer(id);
+                if (afk != null && afk != yeni) yeni.unlistPlayer(afk);
             }
         }, 20L);
     }
 
-    private void apply(Player target, boolean hide) {
-        for (Player viewer : Bukkit.getOnlinePlayers()) {
-            if (viewer.equals(target)) continue;
-            if (hide) {
-                if (!viewer.hasPermission(BYPASS)) viewer.unlistPlayer(target);
-            } else {
-                viewer.listPlayer(target);
-            }
+    @EventHandler
+    public void cikti(PlayerQuitEvent e) {
+        afkListesi.remove(e.getPlayer().getUniqueId());
+    }
+
+    private void gizle(Player afk) {
+        for (Player o : Bukkit.getOnlinePlayers()) {
+            if (o == afk || o.hasPermission("cevherafktab.gor")) continue;
+            o.unlistPlayer(afk);
+        }
+    }
+
+    private void goster(Player afk) {
+        for (Player o : Bukkit.getOnlinePlayers()) {
+            if (o != afk) o.listPlayer(afk);
         }
     }
 }

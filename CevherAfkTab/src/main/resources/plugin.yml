@@ -1,10 +1,10 @@
 name: CevherAfkTab
-version: 1.0.0
+version: 1.0.1
 main: com.cevher.afktab.AfkTabPlugin
 api-version: '1.21'
 depend: [Essentials]
-description: AFK olan oyuncuları tab listesinden gizler (açık kaynak).
+description: AFK oyuncuları tab listesinden gizler
 permissions:
   cevherafktab.gor:
-    description: AFK oyuncuları tab listesinde görmeye devam eder
+    description: AFK oyuncuları tab listesinde görür
     default: false

@@ -18,10 +18,7 @@ import org.bukkit.inventory.meta.Damageable;
 import java.util.EnumSet;
 import java.util.Set;
 
-/**
- * Eski BestTools /refill. Elindeki yığın biterse (blok koyma, yeme, fırlatma) veya aletin
- * kırılırsa, envanterdeki aynısını o slota getirir.
- */
+// Eldeki yığın bitince (blok koyma, yeme, fırlatma) ya da alet kırılınca envanterdeki aynısını o slota getirir.
 public final class RefillListener implements Listener {
 
     /** Yiyip içtikten sonra elde kalan boş kaplar. */

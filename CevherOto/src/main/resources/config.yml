@@ -1,8 +1,5 @@
-# ============================================================
-#  CevherOto - AutoPickup + AutoBlock + BestTools birleşimi
-#  Renk kodları: &a, &l ... ve hex için &#RRGGBB
-# ============================================================
-
+# CevherOto ayarları
+# Renk kodları: &a, &l ... hex için &#RRGGBB
 # Bu dünyalarda eklentinin hiçbir özelliği çalışmaz.
 devre-disi-dunyalar:
   - ornek_dunya
@@ -18,9 +15,7 @@ varsayilan:
   hotbar: true
   doldurma: false
 
-# ------------------------------------------------------------
 # OTOMATİK TOPLAMA (eski AutoPickup)
-# ------------------------------------------------------------
 toplama:
   # Kırılan blokların XP'si direkt oyuncuya verilir (Mending tamir eder).
   xp-direkt: true
@@ -32,9 +27,7 @@ toplama:
   kara-liste:
     - BEDROCK
 
-# ------------------------------------------------------------
 # YARATIK EŞYALARI (eski AutoPickup /drops)
-# ------------------------------------------------------------
 yaratik:
   xp-direkt: true
   # Bu yaratıkların eşyaları toplanmaz.
@@ -42,9 +35,7 @@ yaratik:
     - PLAYER
     - ARMOR_STAND
 
-# ------------------------------------------------------------
 # ENVANTER DOLU UYARISI
-# ------------------------------------------------------------
 envanter-dolu:
   mesaj: true
   # Uyarılar arası en az kaç saniye olsun.
@@ -54,9 +45,7 @@ envanter-dolu:
     satir1: "&c&lDIKKAT ET!"
     satir2: "&fEnvanterin Dolu"
 
-# ------------------------------------------------------------
 # OTOMATİK ERİTME
-# ------------------------------------------------------------
 eritme:
   # false: sadece aşağıdaki "liste" eritilir (önerilen).
   # true : tüm fırın tarifleri eritilir, "kara-liste" hariç (taş -> pürüzsüz taş vb. de olur).
@@ -98,11 +87,9 @@ eritme:
   # Fırındaki gibi eritme XP'si verilsin mi.
   xp-ver: true
 
-# ------------------------------------------------------------
 # OTOMATİK BLOK (eski AutoBlock)
 # Sadece düz vanilya eşyalar sıkıştırılır; Nexo/MMOItems gibi özel
 # eşyalara (isimli, özel verili) asla dokunulmaz.
-# ------------------------------------------------------------
 blok:
   # Oyuncu yerden eşya aldığında da sıkıştır.
   yerden-alinca: true
@@ -126,9 +113,7 @@ blok:
     CLAY_BALL:     { adet: 4, sonuc: CLAY }
     AMETHYST_SHARD: { adet: 4, sonuc: AMETHYST_BLOCK }
 
-# ------------------------------------------------------------
 # EN İYİ ALET (eski BestTools)
-# ------------------------------------------------------------
 alet:
   # Hotbar dışından alet alınırsa konulacağı slot (1-9). Boş hotbar slotu varsa önce o kullanılır.
   favori-slot: 9
@@ -166,16 +151,12 @@ alet:
     - SCULK_CATALYST
     - SCULK_SHRIEKER
 
-# ------------------------------------------------------------
 # OTOMATİK DOLDURMA (eski BestTools /refill)
-# ------------------------------------------------------------
 doldurma:
   # Kırılan aletin yerine envanterdeki aynı türden aleti koy.
   kirilan-aleti-degistir: true
 
-# ------------------------------------------------------------
 # MESAJLAR
-# ------------------------------------------------------------
 mesajlar:
   onek: "&6 CevherOto &8▸ "
   acildi: "&7{ozellik} &aaktif edildi&7."

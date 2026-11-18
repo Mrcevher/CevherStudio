@@ -23,15 +23,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-/**
- * Eski AutoPickup (+ AutoBlock tetikleyicileri).
- * <ul>
- *   <li>Bloğun kendi düşüşleri: BlockDropItemEvent (Fortune/Silk dahil, eritme burada)</li>
- *   <li>Bloğa bağlı düşüşler (şeker kamışı, meşale, sandık içi, Nexo blokları vb.):
- *       kırılan konumu birkaç tick izleyip ItemSpawnEvent ile yakalar</li>
- *   <li>Yaratık düşüşleri: EntityDeathEvent (+ MythicMobs gibi sonradan düşenler için izleme)</li>
- * </ul>
- */
+// Toplama: blok düşüşleri BlockDropItemEvent ile, bloğa bağlı düşüşler (şeker kamışı, meşale, sandık içi,
+// Nexo blokları) konumu birkaç tick izleyip ItemSpawnEvent ile, yaratık düşüşleri EntityDeathEvent ile yakalanır.
 public final class PickupListener implements Listener {
 
     private record Pos(UUID world, int x, int y, int z) {

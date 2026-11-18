@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * /oto ana komutu + eski eklentilerin alışılmış komutları:
- * /auto, /autosmelt, /drops, /bt [hotbar], /refill, /blok [oto]
- */
+// /oto ve eski eklentilerden alışık olunan kısayollar (/auto, /autosmelt, /drops, /bt, /refill, /blok)
 public final class OtoCommand implements TabExecutor {
 
     private final CevherOto plugin;

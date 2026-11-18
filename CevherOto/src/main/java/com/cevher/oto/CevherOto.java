@@ -4,9 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * CevherOto: AutoPickup + AutoBlock + BestTools tek eklentide.
- */
 public final class CevherOto extends JavaPlugin {
 
     private Settings settings;

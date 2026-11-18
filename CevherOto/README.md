@@ -1,56 +1,44 @@
 # CevherOto
 
-AutoPickup, AutoBlock ve BestTools gibi üç ayrı eklentiyi tek eklentide topladık. Oyuncu `/oto` menüsünden
-istediği özelliği kendisi açıp kapatıyor.
+AutoPickup, AutoBlock ve BestTools'u tek eklentide topladık. Her oyuncu `/oto` menüsünden istediği özelliği
+kendisi açıp kapatıyor, hangisinin varsayılan açık olacağını `config.yml` belirliyor.
 
-## Özellikler
-
-- **Otomatik toplama**: kırılan blokların eşyaları ve XP'si direkt envantere gelir
-- **Otomatik eritme**: cevher kırınca eritilmiş hali düşer
-- **Yaratık eşyaları**: öldürülen yaratığın drop'ları direkt envantere gelir
-- **Otomatik blok**: envanterdeki külçe/madenleri bloğa çevirir (`/blok`, `/blok oto`)
+- **Toplama**: kırılan blokların eşyası ve XP'si direkt envantere gelir
+- **Eritme**: cevher kırınca eritilmiş hali düşer
+- **Yaratık eşyaları**: drop'lar direkt envantere gelir
+- **Blok yapma**: külçe/madenleri bloğa çevirir, `/blok oto` ile otomatik
 - **En iyi alet**: kırılacak bloğa uygun aleti seçer
-- **Otomatik doldurma**: eldeki stack bitince envanterden yenisini getirir
+- **Doldurma**: eldeki yığın bitince envanterden yenisini getirir
 - Envanter dolunca mesaj ve başlık uyarısı
 
-## Gerekenler
-
-- Paper 1.21+ (Java 21)
-- PlaceholderAPI isteğe bağlı (`%cevheroto_toplama%` gibi placeholder'lar için)
+Paper 1.21+ (Java 21) ister. PlaceholderAPI zorunlu değil, varsa `%cevheroto_toplama%` gibi placeholder'lar çalışır.
 
 ## Komutlar
 
-| Komut | Açıklama |
-|-------|----------|
-| `/oto` | Ayar menüsü |
+| Komut | |
+|-------|-|
+| `/oto` | ayar menüsü |
 | `/oto yenile` | config'i yeniler (`cevheroto.admin`) |
-| `/autopickup` | Otomatik toplama aç/kapat |
-| `/autosmelt` | Otomatik eritme aç/kapat |
-| `/autodrops` | Yaratık eşyaları aç/kapat |
-| `/besttools [hotbar]` | En iyi alet aç/kapat |
-| `/refill` | Otomatik doldurma aç/kapat |
-| `/autoblock [oto]` | Bloğa çevir / otomatik modu aç-kapat |
+| `/autopickup` `/autosmelt` `/autodrops` `/refill` | ilgili özelliği aç/kapat |
+| `/besttools [hotbar]` | en iyi alet |
+| `/autoblock [oto]` | blok yapma |
 
 ## Yetkiler
 
-| Yetki | Varsayılan |
-|-------|-----------|
-| `cevheroto.toplama` | herkes |
-| `cevheroto.eritme` | op |
-| `cevheroto.yaratik` | herkes |
-| `cevheroto.blok` | herkes |
-| `cevheroto.alet` | herkes |
-| `cevheroto.doldurma` | herkes |
-| `cevheroto.admin` | op |
+`cevheroto.toplama`, `.yaratik`, `.blok`, `.alet`, `.doldurma` herkese açık gelir.
+`cevheroto.eritme` ve `cevheroto.admin` varsayılan olarak sadece op.
 
 ## Ayarlar
 
-Hepsi `config.yml` içinde: varsayılan değerler, kapalı dünyalar, kara listeler, eritme listesi, mesajlar.
-Oyuncunun seçimleri dosyaya değil kendi verisine (PDC) kaydedilir, ayrı bir veri dosyası oluşmaz.
+Varsayılanlar, kapalı dünyalar, kara listeler, eritme listesi ve mesajların hepsi `config.yml` içinde.
+Oyuncu tercihleri dosyaya değil oyuncunun kendi verisine (PDC) yazılır.
 
 ## Derleme
 
-Paper API ve Vault classpath'te olsun, `src/main/java` altını `javac --release 21` ile derle,
-`src/main/resources` içindekini jar'a ekle.
+Paper API, Vault ve PlaceholderAPI classpath'te olsun:
 
-MIT lisanslı.
+```
+javac --release 21 -cp paper-api.jar;Vault.jar;PlaceholderAPI.jar -d out src/main/java/com/cevher/oto/*.java
+```
+
+`src/main/resources` içindekini `out`'a kopyalayıp jar yap. MIT lisanslı.

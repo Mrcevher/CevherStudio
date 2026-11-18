@@ -1,4 +1,4 @@
-<img src="docs/logo.png" alt="logo" width="140" align="right">
+<img src="docs/logo.webp" alt="CevherOto" width="220" align="right">
 
 # CevherOto
 

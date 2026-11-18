@@ -1,0 +1,248 @@
+# ============================================================
+#  CevherOto - AutoPickup + AutoBlock + BestTools birleşimi
+#  Renk kodları: &a, &l ... ve hex için &#RRGGBB
+# ============================================================
+
+# Bu dünyalarda eklentinin hiçbir özelliği çalışmaz.
+devre-disi-dunyalar:
+  - ornek_dunya
+
+# Oyuncu bir özelliği hiç değiştirmediyse bu değerler geçerlidir.
+# Oyuncunun seçimi kendi verisinde (PDC) saklanır, dosya oluşturulmaz.
+varsayilan:
+  toplama: true
+  eritme: false
+  yaratik: true
+  blok: false
+  alet: false
+  hotbar: true
+  doldurma: false
+
+# ------------------------------------------------------------
+# OTOMATİK TOPLAMA (eski AutoPickup)
+# ------------------------------------------------------------
+toplama:
+  # Kırılan blokların XP'si direkt oyuncuya verilir (Mending tamir eder).
+  xp-direkt: true
+  # Spawner kırarken XP verilmez (silk spawner eklentileri için).
+  spawner-xp-verme: true
+  # Envanter doluysa sığmayan eşyalar yok edilir (prison sunucuları için). Önerilmez.
+  doluysa-yok-et: false
+  # Bu bloklar toplanmaz, yere düşer.
+  kara-liste:
+    - BEDROCK
+
+# ------------------------------------------------------------
+# YARATIK EŞYALARI (eski AutoPickup /drops)
+# ------------------------------------------------------------
+yaratik:
+  xp-direkt: true
+  # Bu yaratıkların eşyaları toplanmaz.
+  kara-liste:
+    - PLAYER
+    - ARMOR_STAND
+
+# ------------------------------------------------------------
+# ENVANTER DOLU UYARISI
+# ------------------------------------------------------------
+envanter-dolu:
+  mesaj: true
+  # Uyarılar arası en az kaç saniye olsun.
+  bekleme-saniye: 15
+  baslik:
+    aktif: true
+    satir1: "&c&lDIKKAT ET!"
+    satir2: "&fEnvanterin Dolu"
+
+# ------------------------------------------------------------
+# OTOMATİK ERİTME
+# ------------------------------------------------------------
+eritme:
+  # false: sadece aşağıdaki "liste" eritilir (önerilen).
+  # true : tüm fırın tarifleri eritilir, "kara-liste" hariç (taş -> pürüzsüz taş vb. de olur).
+  tum-tarifler: false
+  liste:
+    - RAW_IRON
+    - RAW_GOLD
+    - RAW_COPPER
+    - IRON_ORE
+    - DEEPSLATE_IRON_ORE
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+    - COPPER_ORE
+    - DEEPSLATE_COPPER_ORE
+    - ANCIENT_DEBRIS
+  kara-liste:
+    - COAL_ORE
+    - DEEPSLATE_COAL_ORE
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+    - LAPIS_ORE
+    - DEEPSLATE_LAPIS_ORE
+    - REDSTONE_ORE
+    - DEEPSLATE_REDSTONE_ORE
+    - NETHER_QUARTZ_ORE
+    - OAK_LOG
+  # Eritme açıkken yaratıklardan düşen çiğ etler pişmiş olarak gelir.
+  yaratik-etleri: true
+  yaratik-listesi:
+    - BEEF
+    - PORKCHOP
+    - CHICKEN
+    - MUTTON
+    - RABBIT
+    - COD
+    - SALMON
+  # Fırındaki gibi eritme XP'si verilsin mi.
+  xp-ver: true
+
+# ------------------------------------------------------------
+# OTOMATİK BLOK (eski AutoBlock)
+# Sadece düz vanilya eşyalar sıkıştırılır; Nexo/MMOItems gibi özel
+# eşyalara (isimli, özel verili) asla dokunulmaz.
+# ------------------------------------------------------------
+blok:
+  # Oyuncu yerden eşya aldığında da sıkıştır.
+  yerden-alinca: true
+  # Bir sandık/fırın vb. kapatıldığında da sıkıştır.
+  envanter-kapaninca: true
+  tarifler:
+    IRON_NUGGET:   { adet: 9, sonuc: IRON_INGOT }
+    GOLD_NUGGET:   { adet: 9, sonuc: GOLD_INGOT }
+    COAL:          { adet: 9, sonuc: COAL_BLOCK }
+    IRON_INGOT:    { adet: 9, sonuc: IRON_BLOCK }
+    GOLD_INGOT:    { adet: 9, sonuc: GOLD_BLOCK }
+    COPPER_INGOT:  { adet: 9, sonuc: COPPER_BLOCK }
+    DIAMOND:       { adet: 9, sonuc: DIAMOND_BLOCK }
+    EMERALD:       { adet: 9, sonuc: EMERALD_BLOCK }
+    REDSTONE:      { adet: 9, sonuc: REDSTONE_BLOCK }
+    LAPIS_LAZULI:  { adet: 9, sonuc: LAPIS_BLOCK }
+    RAW_IRON:      { adet: 9, sonuc: RAW_IRON_BLOCK }
+    RAW_GOLD:      { adet: 9, sonuc: RAW_GOLD_BLOCK }
+    RAW_COPPER:    { adet: 9, sonuc: RAW_COPPER_BLOCK }
+    QUARTZ:        { adet: 4, sonuc: QUARTZ_BLOCK }
+    CLAY_BALL:     { adet: 4, sonuc: CLAY }
+    AMETHYST_SHARD: { adet: 4, sonuc: AMETHYST_BLOCK }
+
+# ------------------------------------------------------------
+# EN İYİ ALET (eski BestTools)
+# ------------------------------------------------------------
+alet:
+  # Hotbar dışından alet alınırsa konulacağı slot (1-9). Boş hotbar slotu varsa önce o kullanılır.
+  favori-slot: 9
+  # Macera modunda da çalışsın mı.
+  macera-modunda: false
+  # Eğilirken (shift) alet değiştirilmez - elle seçim yapmak için.
+  egilince-devre-disi: true
+  # Savaştan sonra bu kadar saniye alet değiştirilmez (kılıç elindeyken yanlışlıkla blok tıklarsan).
+  savas-bekleme-saniye: 3
+  # Bu kadar veya daha az dayanıklılığı kalan aletler seçilmez (kırılmasın diye).
+  min-dayaniklilik: 5
+  # Düşman yaratığa vurunca en iyi kılıca geç.
+  dusmana-kilic: true
+  # Baltaları da silah olarak say.
+  balta-silah: false
+  # Bu bloklarda alet değiştirilmez.
+  blok-kara-liste: []
+  # Bu eşyalar asla otomatik seçilmez.
+  esya-kara-liste: []
+  # Bu bloklarda Silk Touch'lı alet tercih edilir.
+  silk-tercih:
+    - GLASS
+    - GLASS_PANE
+    - ICE
+    - PACKED_ICE
+    - BLUE_ICE
+    - ENDER_CHEST
+    - BOOKSHELF
+    - GLOWSTONE
+    - SEA_LANTERN
+    - TURTLE_EGG
+    - BEE_NEST
+    - BEEHIVE
+    - SCULK_SENSOR
+    - SCULK_CATALYST
+    - SCULK_SHRIEKER
+
+# ------------------------------------------------------------
+# OTOMATİK DOLDURMA (eski BestTools /refill)
+# ------------------------------------------------------------
+doldurma:
+  # Kırılan aletin yerine envanterdeki aynı türden aleti koy.
+  kirilan-aleti-degistir: true
+
+# ------------------------------------------------------------
+# MESAJLAR
+# ------------------------------------------------------------
+mesajlar:
+  onek: "&6 CevherOto &8▸ "
+  acildi: "&7{ozellik} &aaktif edildi&7."
+  kapandi: "&7{ozellik} &cdeaktif edildi&7."
+  yetki-yok: "&cBu komutu kullanmak için yeterli yetkiye sahip değilsin!"
+  sadece-oyuncu: "&cBu komut sadece oyun içinde kullanılabilir."
+  yenilendi: "&aEklenti konfigürasyonu başarıyla yenilendi!"
+  envanter-dolu: "&cEnvanterin dolu olduğu için eşyayı toplayamadın!"
+  sikistirildi: "&a{adet} &7adet blok yapıldı."
+  sikistirilacak-yok: "&7Envanterinde bloğa çevrilecek bir şey yok."
+  bilinmeyen: "&cBilinmeyen alt komut. &7/oto &cyaz."
+  durum-acik: "&aAçık"
+  durum-kapali: "&cKapalı"
+
+# Menü (/oto)
+menu:
+  baslik: "&8CevherOto Ayarları"
+  dolgu: GRAY_STAINED_GLASS_PANE
+  durum-satiri: "&7Durum: {durum}"
+  tikla: "&eDeğiştirmek için tıkla"
+  yetkisiz: "&cBu özellik için yetkin yok"
+  sikistir-buton:
+    isim: "&6Envanteri Sıkıştır"
+    aciklama:
+      - "&7Envanterdeki külçe ve madenleri"
+      - "&7şimdi bloğa çevirir."
+      - ""
+      - "&eTıkla"
+
+# Özellik isimleri ve menü açıklamaları
+ozellikler:
+  toplama:
+    isim: "Otomatik Toplama"
+    aciklama:
+      - "&7Kırdığın blokların eşyaları ve"
+      - "&7XP'si direkt envanterine gelir."
+  eritme:
+    isim: "Otomatik Eritme"
+    aciklama:
+      - "&7Kazdığın ham madenler eritilmiş"
+      - "&7olarak gelir. (Toplama açık olmalı)"
+  yaratik:
+    isim: "Yaratık Eşyaları"
+    aciklama:
+      - "&7Öldürdüğün yaratıkların eşyaları"
+      - "&7ve XP'si direkt envanterine gelir."
+  blok:
+    isim: "Otomatik Blok"
+    aciklama:
+      - "&7Külçe ve madenler 9'a ulaşınca"
+      - "&7otomatik bloğa çevrilir."
+  alet:
+    isim: "En İyi Alet"
+    aciklama:
+      - "&7Blok kırarken en uygun aleti,"
+      - "&7düşmana vururken en iyi kılıcı seçer."
+      - "&8Eğilirken devre dışı."
+  hotbar:
+    isim: "Sadece Hotbar"
+    aciklama:
+      - "&7Açıkken En İyi Alet sadece"
+      - "&7hotbar'daki aletleri kullanır."
+  doldurma:
+    isim: "Otomatik Doldurma"
+    aciklama:
+      - "&7Elindeki blok/yiyecek bitince veya"
+      - "&7aletin kırılınca envanterden doldurur."
+
+# PlaceholderAPI: %cevheroto_toplama%, %cevheroto_eritme%, %cevheroto_yaratik%,
+# %cevheroto_blok%, %cevheroto_alet%, %cevheroto_hotbar%, %cevheroto_doldurma%

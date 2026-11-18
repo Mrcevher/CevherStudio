@@ -1,0 +1,56 @@
+name: CevherOto
+version: 1.0.0
+main: com.cevher.oto.CevherOto
+api-version: "1.21"
+author: Cevher
+description: Otomatik toplama, eritme, blok yapma, en iyi alet ve otomatik doldurma tek eklentide.
+softdepend: [PlaceholderAPI]
+
+commands:
+  oto:
+    description: CevherOto ayar menüsünü açar.
+    usage: /oto [toplama|eritme|yaratik|blok|alet|hotbar|doldurma|sikistir|yenile]
+    aliases: [cevheroto, otomatik]
+  autopickup:
+    description: Otomatik toplamayı açar/kapatır.
+    aliases: [auto, pickup]
+  autosmelt:
+    description: Otomatik eritmeyi açar/kapatır.
+    aliases: [asmelt]
+  autodrops:
+    description: Yaratık eşyalarını toplamayı açar/kapatır.
+    aliases: [drops, autod]
+  besttools:
+    description: En iyi aleti seçmeyi açar/kapatır.
+    usage: /<command> [hotbar]
+    aliases: [bt, besttool]
+  refill:
+    description: Otomatik doldurmayı açar/kapatır.
+    aliases: [rf]
+  autoblock:
+    description: Envanterdeki külçe/madenleri bloğa çevirir. "/blok oto" ile otomatik modu açar/kapatır.
+    usage: /<command> [oto]
+    aliases: [block, blok]
+
+permissions:
+  cevheroto.toplama:
+    description: Otomatik toplama
+    default: true
+  cevheroto.eritme:
+    description: Otomatik eritme
+    default: op
+  cevheroto.yaratik:
+    description: Yaratık eşyalarını otomatik toplama
+    default: true
+  cevheroto.blok:
+    description: Otomatik blok yapma ve /blok
+    default: true
+  cevheroto.alet:
+    description: En iyi aleti otomatik seçme
+    default: true
+  cevheroto.doldurma:
+    description: Otomatik doldurma
+    default: true
+  cevheroto.admin:
+    description: /oto yenile
+    default: op
